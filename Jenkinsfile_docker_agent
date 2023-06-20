@@ -1,11 +1,10 @@
 pipeline {
 	agent any
 		stages {
-			cleanWs()
-			dir("${env.WORKSPACE}/aQA"){
-    				sh "pwd"
-			}
-				stage('One') {
+			stage('One') {
+				dir("${env.WORKSPACE}"){
+    					sh "pwd"
+				}
 				steps {
 					echo 'Hi, this is Declarative Pipeline'
 				}
