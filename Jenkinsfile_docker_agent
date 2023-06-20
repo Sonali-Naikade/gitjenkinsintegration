@@ -2,9 +2,6 @@ pipeline {
 	agent any
 		stages {
 			stage('One') {
-				dir("${env.WORKSPACE}"){
-    					sh "pwd"
-				}
 				steps {
 					echo 'Hi, this is Declarative Pipeline'
 				}
@@ -35,12 +32,13 @@ pipeline {
 					stage('Integration test') {
 						agent {							
 							docker {
-								reuseNode false
+								reuseNode true
 								image 'ubuntu'
 							}
 						}
 						steps {
 							echo 'Running the integration test..'
+							cleanWs()
 						}
 					}
 			}
